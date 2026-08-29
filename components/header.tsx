@@ -81,7 +81,21 @@ export function Header() {
           </div>
 
           {/* Desktop Nav */}
-     
+          <nav className="hidden md:flex items-center gap-2">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className={navClass(link.href)}>
+                {link.label}
+              </Link>
+            ))}
+            <button onClick={openBookingModal} className={navClass("/request")}>
+              Book Now
+              {selectedCount > 0 && (
+                <span className="ml-1.5 inline-flex items-center justify-center w-4 h-4 text-[10px] font-bold rounded-full bg-primary-foreground text-primary">
+                  {selectedCount}
+                </span>
+              )}
+            </button>
+          </nav>
 
           {/* Mobile WhatsApp */}
           <div className="md:hidden flex items-center gap-2">
